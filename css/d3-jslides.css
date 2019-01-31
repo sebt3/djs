@@ -68,6 +68,9 @@ section footer {
 	line-height: 1.2em;
 	vertical-align: top;
 }
+.slides section .notes {
+	visibility: hidden;
+}
 /*********************************************
  * HEADERS
  *********************************************/
@@ -283,7 +286,7 @@ a:hover {
 		text-align: left;
 	}
 	.slides section {
-		visibility: visible !important;
+		visibility: visible;
 		position: static !important;
 		width: 100% !important;
 		height: 100% !important;
@@ -337,4 +340,9 @@ a:hover {
 		content: "";
 		clear: both;
 	}
+	.slides section .notes {
+		visibility: hidden;
+		color:transparent;
+	}
+
 }
