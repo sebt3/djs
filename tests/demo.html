@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>D3 - jslides</title>
+    <link rel="stylesheet" href="../dist/djs.min.css">
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Montserrat|Righteous');
+      @media screen {
+      body {
+	background-color: #fdf6e3;
+      }
+      .title, .first div {
+	background-color: #657b83;
+	color: #fdf6e3;
+      }
+      }
+      body, section footer {
+	color: #657b83;
+	font-family: 'Montserrat', sans-serif;
+      }
+      .title, h1, h2, h3 {
+	font-family: 'Righteous', cursive;
+      }
+    </style>
+  </head>
+  <body style="overflow: auto;">
+    <div class="jslides">
+      <div class="slides">
+        <section class="first">
+          <div class="content">
+            <h1>Presentation title</h1>
+            <small>From 10/01/2019 to 16/01/2019</small>
+	  </div>
+        </section>
+        <section class="first">
+          <div class="content">
+            <h1>Presentation and objectives</h1>
+            <p><small>Who am I ?</small></p>
+            <p><small>Who are you ?</small></p>
+            <p><small>What is this for you ?</small></p>
+	  </div>
+        </section>
+        <section class="index">
+          <div class="title"><div>
+            <h1>Table of content</h1>
+          </div></div>
+        </section>
+        <section>
+          <div class="title"><div>
+            <h1>Some Shell</h1>
+          </div></div>
+          <pre><code class="bash">proxmox.tasks() {
+	task.add proxmox.base 		"Download base packages for proxmox"
+	task.add proxmox.setup 		"Configure the vlan for VMs"
+	task.add proxmox.install	"install proxmox"
+}	</code></pre>
+        </section>
+        <section>
+          <div class="title"><div>
+            <h1>Some PL/SQL</h1>
+          </div></div>
+          <pre><code class="SQL">DECLARE
+  X as toto;
+BEGIN
+  FOR( v as select toto from titi) LOOP
+  END for;
+END;      </code></pre>
+        </section>
+        <section>
+          <div class="title"><div>
+            <h1>Slide title</h1>
+            <h2>Slide sub-title</h2>
+          </div></div>
+          <ol>
+           <li/>bullet 1
+           <li/>bullet 2 with very long text to show here
+          </ol>
+        </section>
+        <section>
+          <div class="title"><div>
+            <h1>Slide title</h1>
+            <h2>Slide sub-title 2</h2>
+          </div></div>
+          <ul>
+           <li/>bullet 1
+           <li/>bullet 2
+          </ul>
+        </section>
+        <section>
+          <div class="title"><div>
+            <h1>Slide title</h1>
+            <h2>Slide sub-title 3</h2>
+          </div></div>
+          <ul>
+           <li/>bullet 1
+           <li/>bullet 2
+          </ul>
+        </section>
+        <section>
+          <div class="title"><div>
+            <h1>Slide title</h1>
+            <h2>Slide sub-title 4</h2>
+          </div></div>
+          <ul>
+           <li/>bullet 1
+           <li/>bullet 2
+          </ul>
+        </section>
+        <section>
+          <div class="title"><div>
+            <h1>Slide title a new</h1>
+            <h2>Slide sub-title 4</h2>
+          </div></div>
+          <ul>
+           <li/>bullet 1
+           <li/>bullet 2
+          </ul>
+        </section>
+        <section class="first">
+          <div class="content">
+            <h1>Questions ?</h1>
+	  </div>
+        </section>
+      </div>
+      <div class="footer">
+       <footer>
+        &copy; Copyright 2019 Sébastien Huss
+       </footer>
+      </div>
+    </div>
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.1/highlight.min.js"></script>
+    <script src="../dist/djs.min.js"></script>
+  </body>
+</html>
+
