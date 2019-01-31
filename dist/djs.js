@@ -8,15 +8,54 @@
 })(this, (function(slides, d3, global) {
 	var all_slides = [];
 	var current = 0;
-	function render(id) {
+
+	// navigation
+	var nav = {}
+	nav.render = function(id) {
 		if (id<0||id>=all_slides.nodes().length||current==id) return null;
 		d3.select(all_slides.nodes()[current]).classed('out',true);
 		d3.select(all_slides.nodes()[id]).classed('out',false);
 		current = id;
 	}
-	function prev() { render(current-1); }
-	function next() { render(current+1); }
-	slides.all = function() {return all_slides; }
+	nav.prev = function() { nav.render(current-1); }
+	nav.next = function() { nav.render(current+1); }
+	// events
+	var events = {}
+	events.keydown = function() {
+		switch(d3.event.keyCode) {
+			case 8:  // back
+			case 37: // left
+			case 38: // up
+			case 109:// kp_minus
+				nav.prev();break;
+			case 13: // enter
+			case 32: // space
+			case 39: // right
+			case 40: // down
+			case 107:// kp_plus
+				nav.next();break;
+			//default:console.log(d3.event.keyCode);
+		}
+	}
+	events.wheel = function() {
+		if(d3.event.wheelDelta<0)
+			nav.next();
+		else if(d3.event.wheelDelta>0)
+			nav.prev();
+	}
+	events.slide = {}
+	events.slide.x = 0;
+	function unify(e) {	return e.changedTouches ? e.changedTouches[0] : e };
+	events.slide.start = function() {
+		events.slide.x = unify(d3.event).clientX;
+	}
+	events.slide.end = function() {
+		if (events.slide.x === 0) return;
+		var dx = unify(d3.event).clientX - events.slide.x;
+		events.slide.x = 0;
+		nav.render(current-Math.sign(dx));
+	}
+
 	d3.select(window).on('load.jslides',	function() {
 		var footer = d3.select('.jslides .footer footer');
 		all_slides = d3.select('.jslides .slides').selectAll('section');
@@ -66,29 +105,13 @@
 		});
 		
 
-		//d3.select(window).on('click.jslides', next);
-		d3.select(window).on('keydown.jslides', function() {
-			switch(event.keyCode) {
-				case 8:  // back
-				case 37: // left
-				case 38: // up
-				case 109:// kp_minus
-					prev();break;
-				case 13: // enter
-				case 32: // space
-				case 39: // right
-				case 40: // down
-				case 107:// kp_plus
-					next();break;
-				//default:console.log(event.keyCode);
-			}
-		});
-		d3.select(window).on('wheel.jslides', function() {
-			if(event.wheelDelta<0)
-				next();
-			else if(event.wheelDelta>0)
-				prev();
-		}, {passive: true});
+		d3.select(window)
+			.on(     'wheel.jslides',	events.wheel, {passive: true})
+			.on(   'keydown.jslides',	events.keydown)
+			.on('touchstart.jslides',	events.slide.start)
+			.on(  'touchend.jslides',	events.slide.end)
+			.on( 'mousedown.jslides',	events.slide.start)
+			.on(   'mouseup.jslides',	events.slide.end);
 	});
 	if (typeof global.hljs === 'object')
 		hljs.initHighlightingOnLoad();
