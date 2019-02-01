@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>D3 - jslides</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sebt3/djs@0.2.0/dist/djs.min.css">
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Indie+Flower|Lobster');
+      @media screen { /* #93a1a1 #002b36 #eee8d5 */
+      body {
+	background-color: #eee8d5;
+      }
+      .title, .first div {
+	background-color: #002b36;
+	color: #eee8d5;
+      }
+      }
+      body, section footer {
+	color: #002b36;
+	font-family: 'Indie Flower', cursive;
+      }
+      .title, h1, h2, h3 {
+	font-family: 'Lobster', cursive;
+      }
+      .gfx {
+        width: 450px;
+        font-size: 0.5em;
+        margin: 0 auto;
+      }
+      .lines .line { fill: none; stroke-width: 3px; }
+      .axis .domain { fill: none; stroke-width: 0px; }
+      .dots circle { fill: none; stroke-width: 3px; }
+      .zoom { cursor: move; fill: none; pointer-events: all; }
+    </style>
+  </head>
+  <body style="overflow: auto;">
+    <div class="jslides">
+      <div class="slides">
+        <section class="first">
+          <div class="content">
+            <h1>Presentation with d3 gfx</h1>
+            <small>A donut and a bar chart</small>
+	  </div>
+        </section>
+        <section>
+          <div class="title"><div>
+            <h1>Donut</h1>
+          </div></div>
+          <div class="gfx" id='gfx1'></div>
+        </section>
+        <section>
+          <div class="title"><div>
+            <h1>Bar chart</h1>
+          </div></div>
+          <div class="gfx" id='gfx2'></div>
+        </section>
+      </div>
+    </div>
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/sebt3/d3-bootstrap@0.5.2/dist/d3-bootstrap-withextra.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/sebt3/d3-graph-componants@0.1/dist/d3-graph-componants.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/sebt3/djs@0.2.0/dist/djs.min.js"></script>
+    <script>
+      d3.select('#gfx1').call(dgc.donut.donutWithLegend().data([
+	{'value':10,'label':'male'},
+	{'value':10,'label':'female'},
+	{'value':10,'label':'unknown'}
+      ]));
+      d3.select('#gfx2').call(dgc.bar.bar().data([
+	{'min':1,'max':10,'avg':5,'type':'volvo'},
+	{'min':3,'max':25,'avg':8,'type':'renault'},
+	{'min':2,'max':30,'avg':12,'type':'ford'},
+	{'min':10,'max':40,'avg':20,'type':'bmw'},
+      ]));
+    </script>
+  </body>
+</html>
+
