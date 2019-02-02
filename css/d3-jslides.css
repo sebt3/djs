@@ -109,6 +109,36 @@ h4 {	font-size: 1em; }
 /*********************************************
  * OTHER
  *********************************************/
+.panel {
+	margin:0 0;
+	padding:3px 3px;
+	float:left;
+	width:50%;
+	height:100%;
+	box-sizing: border-box;
+}
+.panel3 {
+	margin:0 0;
+	padding:3px 3px;
+	float:left;
+	width:33%;
+	height:100%;
+	box-sizing: border-box;
+}
+.full {
+	margin: 0 0;
+	padding: 0 0;
+	width:100%;
+	height:100%;
+}
+.row {
+	margin:0 0;
+	padding:3px 3px;
+	width:100%;
+	height:calc(50% - 2em - 20px);
+	box-sizing: border-box;
+}
+
 p {
 	margin: 20px 0;
 	line-height: 1.3;
@@ -233,6 +263,15 @@ a:hover {
 	text-shadow: none;
 	border: none;
 }
+
+/*********************************************
+ * GFX
+ *********************************************/
+.lines .line { fill: none; stroke-width: 3px; }
+.axis .domain { fill: none; stroke-width: 0px; }
+.dots circle { fill: none; stroke-width: 3px; }
+.zoom { cursor: move; fill: none; pointer-events: all; }
+
 /*********************************************
  * PRINTING
  *********************************************/
@@ -346,3 +385,4 @@ a:hover {
 	}
 
 }
+

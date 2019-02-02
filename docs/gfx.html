@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>D3 - jslides</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sebt3/djs@0.2.0/dist/djs.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sebt3/djs@0.3.0/dist/djs.min.css">
     <style>
       @import url('https://fonts.googleapis.com/css?family=Indie+Flower|Lobster');
       @media screen { /* #93a1a1 #002b36 #eee8d5 */
@@ -26,14 +26,10 @@
 	font-family: 'Lobster', cursive;
       }
       .gfx {
-        width: 450px;
-        font-size: 0.5em;
-        margin: 0 auto;
+	width: 450px;
+	font-size: 0.5em;
+	margin: 0 auto;
       }
-      .lines .line { fill: none; stroke-width: 3px; }
-      .axis .domain { fill: none; stroke-width: 0px; }
-      .dots circle { fill: none; stroke-width: 3px; }
-      .zoom { cursor: move; fill: none; pointer-events: all; }
     </style>
   </head>
   <body style="overflow: auto;">
@@ -63,7 +59,7 @@
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/sebt3/d3-bootstrap@0.5.2/dist/d3-bootstrap-withextra.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/sebt3/d3-graph-componants@0.1/dist/d3-graph-componants.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/sebt3/djs@0.2.0/dist/djs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/sebt3/djs@0.3.0/dist/djs.min.js"></script>
     <script>
       d3.select('#gfx1').call(dgc.donut.donutWithLegend().data([
 	{'value':10,'label':'male'},

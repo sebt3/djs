@@ -15,16 +15,28 @@
 	/*
 	 * Navigation
 	 *************/
-	nav.current = 0;
+	nav.read = function() {
+		if (window.location.hash.length == 0) return 0;
+		var id = Number.parseInt(window.location.hash.substring(1));
+		if (Number.isNaN(id))	return 0;
+		return id;
+	}
+	nav.write = function(id) { window.location.hash = id; }
+	nav.current = nav.read();
 	nav.render = function(id) {
-		if (id<0||id>=all_slides.nodes().length||nav.current==id) return null;
+		if (id<0)
+			id=0;
+		if(id>=all_slides.nodes().length)
+			id=all_slides.nodes().length-1;
+		if (nav.current==id) return null;
 		d3.select(all_slides.nodes()[nav.current]).classed('out',true);
 		d3.select(all_slides.nodes()[id]).classed('out',false);
 		speaker.nav(id);
 		nav.current = id;
+		nav.write(id);
 	}
-	nav.prev = function() { nav.render(nav.current-1); }
-	nav.next = function() { nav.render(nav.current+1); }
+	nav.prev = function(m) { if(typeof m === 'undefined')m=1;nav.render(nav.current-m); }
+	nav.next = function(m) { if(typeof m === 'undefined')m=1;nav.render(nav.current+m); }
 	/*
 	 * Events
 	 *********/
@@ -90,22 +102,35 @@
 		}
 		/* Create the window and the pointers */
 		speaker.w  = window.open('', '_blank', 'toolbar=0,location=0,menubar=0');
-		speaker.w.document.write('<html><head><title>speaker view</title><style>.column{margin:0 0;padding:10px 10px;float:left;width:50%; height:100%;box-sizing: border-box;} iframe{width:190%;height:90%;box-sizing: border-box;margin: 2% 2%;transform-origin: 0 0;transform: scale(0.50);margin-bottom:-45%;} .right .control{border-bottom:1px solid black;} </style></head><body><div class="column left"><iframe class="current"></iframe><iframe class="next"></iframe></div><div class="column right"><div class="control"></div><div class="notes"></div></div></body></html>');
-		speaker.frame_cur = d3.select(slides.speaker.w.document).select('.current');
-		speaker.frame_next = d3.select(slides.speaker.w.document).select('.next');
-		speaker.control = d3.select(slides.speaker.w.document).select('.control');
-		speaker.notes = d3.select(slides.speaker.w.document).select('.notes');
+		speaker.w.document.write('<html><head><title>speaker view</title><style>.column{margin:0 0;padding:10px 10px;float:left;width:50%; height:100%;box-sizing: border-box;} iframe{width:190%;height:90%;box-sizing: border-box;margin: 2% 2%;transform-origin: 0 0;transform: scale(0.50);margin-bottom:-45%;} .right .control{border-bottom:1px solid black;} button{margin:5px 5px;}</style></head><body><div class="column left"><iframe class="current"></iframe><iframe class="next"></iframe></div><div class="column right"><div class="control"></div><div class="notes"></div></div></body></html>');
+		speaker.frame_cur = d3.select(speaker.w.document).select('.current');
+		speaker.frame_next = d3.select(speaker.w.document).select('.next');
+		speaker.control = d3.select(speaker.w.document).select('.control');
+		speaker.notes = d3.select(speaker.w.document).select('.notes');
 		speaker.current = d3.select(speaker.frame_cur.node().contentDocument);
 		speaker.next = d3.select(speaker.frame_next.node().contentDocument);
-		/* set the events */
-		d3.select(speaker.w)
-			.on(     'wheel.jslides',	events.wheel, {passive: true})
-			.on(   'keydown.jslides',	events.keydown)
-			.on('touchstart.jslides',	events.slide.start)
-			.on(  'touchend.jslides',	events.slide.end)
-			.on( 'mousedown.jslides',	events.slide.start)
-			.on(   'mouseup.jslides',	events.slide.end);
-
+		/* set the controls bar */
+		var tb = speaker.control.append('div');
+		tb.append('button').attr('type','button').html('&laquo;').on('click',function() {nav.prev(5)});
+		tb.append('button').attr('type','button').html('&lsaquo;').on('click',function() {nav.prev()});
+		tb.append('button').attr('type','button').html('&rsaquo;').on('click',function() {nav.next()});
+		tb.append('button').attr('type','button').html('&raquo;').on('click',function() {nav.next(5)});
+		var s = tb.append('select').attr('id','select').on('change',function() {
+			nav.render(tb.select('#select').property('value')-1);
+		});
+		all_slides.each(function(i){
+			var t;
+			var me = d3.select(this).select(".title");
+			if (!me.select('h1').empty())
+				t = me.select('h1').text();
+			else if (d3.select(this).classed('first') && !d3.select(this).select('h1').empty())
+				t = d3.select(this).select('h1').text();
+			else
+				t = 'slide '+i;
+			if (!me.select('h2').empty()) 
+				t+=' - '+me.select('h2').text();
+			s.append('option').attr('value',i).text(t);
+		});
 
 		/* Copy the stylesheets */
 		for (var i = 0, len = document.styleSheets.length; i < len; i++) {
@@ -137,7 +162,6 @@
 		speaker.nav(nav.current);
 
 	}
-	slides.speaker = speaker;
 
 	/*
 	 * Complete the document after loading

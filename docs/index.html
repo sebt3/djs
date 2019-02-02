@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>djs - Documentation</title>
+    <link rel="stylesheet" href="../dist/djs.min.css">
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Montserrat|Righteous');
+      @media screen {
+      body {
+	 background-image: url('https://openclipart.org/download/307657/1538724811.svg');
+	 background-repeat: no-repeat;
+	 background-size: 100%;
+      }
+      .title, .first div {
+	 background-image: url('https://openclipart.org/download/307655/1538724641.svg');
+	 background-repeat: no-repeat;
+	 background-size: 100%;
+      }
+      }
+      body, section footer {
+	color: #939dac;
+	font-family: 'Montserrat', sans-serif;
+      }
+      .title, .first div, h1, h2, h3 {
+	font-family: 'Righteous', cursive;
+	color: #1d3c6a;
+      }
+      .first div small {
+	color: #245480;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="jslides">
+      <div class="slides">
+        <section class="first">
+          <div class="content">
+            <h1>djs</h1>
+            <h2>Documentation</h2>
+            <small>A very light javascript framework for presentation</small>
+	  </div>
+        </section>
+        <section class="index">
+          <div class="title"><div>
+            <h1>Table of content</h1>
+          </div></div>
+        </section>
+        <section>
+          <div class="title"><div>
+            <h1>Ordered list</h1>
+          </div></div>
+          <ol>
+           <li>Your numbered list</li>
+           <li>using the usual "ol" html tag</li>
+           <li>Nested<ol>
+             <li>work as expected</li>
+             <li>and<ol>
+               <li>sub-nesting</li>
+               <li>work great too</li>
+             </ol></li>
+           </ol></li>
+           <li>the usual and plain simple html way
+          </ol>
+        </section>
+        <section>
+          <div class="title"><div>
+            <h1>Bullet list</h1>
+          </div></div>
+          <ul>
+           <li>Your bullet list</li>
+           <li>using the usual "ul" html tag</li>
+           <li>Nested<ul>
+             <li>work as expected</li>
+             <li>and<ul>
+               <li>sub-nesting</li>
+               <li>work great too</li>
+             </ul></li>
+           </ul></li>
+           <li>the usual and plain simple html way
+          </ul>
+        </section>
+        <section>
+          <div class="title"><div>
+            <h1>Tables</h1>
+          </div></div>
+          <table>
+          <tr><th>#</th><th>name</th><th>value</th></tr>
+          <tr><td>1</td><td>something</td><td>5647</td></tr>
+          <tr><td>2</td><td>anything longer</td><td>876</td></tr>
+          <tr><td>3</td><td>nothing</td><td>0</td></tr>
+          </table>
+        </section>
+        <section>
+          <div class="title"><div>
+            <h1>Two panels</h1>
+          </div></div>
+          <div class='panel'>
+          Content on the left
+          </div>
+          <div class='panel'>
+          <img style='width:100%' src='http://www.promos-pub.com/wp-content/uploads/2014/07/72d2881eabd41c6bd94b60564c561087.jpg' />
+          </div>
+        </section>
+        <section>
+          <div class="title"><div>
+            <h1>Two horizontals panels</h1>
+          </div></div>
+          <div class='full'>
+          <div class='row'>
+          Content on top
+          </div>
+          <div class='row'>
+          <img style='height:100%' src='http://www.promos-pub.com/wp-content/uploads/2014/07/72d2881eabd41c6bd94b60564c561087.jpg' />
+          </div>
+          </div>
+        </section>
+        <section>
+          <div class="title"><div>
+            <h1>Speaker view</h1>
+          </div></div>
+          <ul>
+           <li>There's a speaker view available</li>
+           <li>Just press [s] to start it</li>
+           <li>Notes are available in the speaker view</li>
+          </ul>
+          <div class="notes">
+           <p>Feel free to add anything within a div classed "notes" to have your notes</p>
+          </div>
+        </section>
+        <section>
+          <div class="title"><div>
+            <h1>Graphics using D3</h1>
+          </div></div>
+<svg width="400" height="300" id="gfx1"></svg>
+
+          <div class="notes">
+           <p>You'll have to build your D3 visualisation yourself... or use a D3 gfx library</p>
+          </div>
+        </section>
+        <section class="first">
+          <div class="content">
+            <h1>Howto</h1>
+            <small>The following slides show you the html code to use this</small>
+	  </div>
+        </section>
+        <section>
+          <div class="title"><div>
+            <h1>Base template</h1>
+          </div></div>
+          <pre><code class="html">&lt;html>
+  &lt;head>
+    &lt;title>title&lt;/title>
+    &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sebt3/djs@0.3.0/dist/djs.min.css">
+  &lt;/head>
+  &lt;body>
+    &lt;div class="jslides">
+      &lt;div class="slides">
+        &lt;section>
+        First slide content here
+        &lt;/section>
+      &lt;/div>
+    &lt;/div>
+    &lt;script src="https://d3js.org/d3.v4.min.js">&lt;/script>
+    &lt;script src="https://cdn.jsdelivr.net/gh/sebt3/djs@0.3.0/dist/djs.min.js">&lt;/script>
+  &lt;/body>
+&lt;/html>   </code></pre>
+        </section>
+        <section>
+          <div class="title"><div>
+            <h1>A title slide</h1>
+          </div></div>
+          <pre><code class="html">        &lt;section class="first">
+          &lt;div class="content">
+            &lt;h1>djs&lt;/h1>
+            &lt;h2>Documentation&lt;/h2>
+            &lt;small>A very light javascript framework for presentation&lt;/small>
+	  &lt;/div>
+        &lt;/section></code></pre>
+        </section>
+        <section>
+          <div class="title"><div>
+            <h1>A slide with title</h1>
+          </div></div>
+          <pre><code class="html">        &lt;section>
+          &lt;div class="title">&lt;div>
+            &lt;h1>A title&lt;/h1>
+            &lt;h2>A sub title&lt;/h2>
+          &lt;/div>&lt;/div>
+          Slide content
+        &lt;/section></code></pre>
+        </section>
+        <section>
+          <div class="title"><div>
+            <h1>TOC</h1>
+          </div></div>
+          <ul>
+          <li>A table of content slide is just a section classed "index". </li>
+          <li>You're free to add your title if you need.</li>
+          </ul>
+          <pre><code class="html">        &lt;section class="index">
+          &lt;div class="title">&lt;div>
+            &lt;h1>your TOC title&lt;/h1>
+          &lt;/div>&lt;/div>
+        &lt;/section></code></pre>
+        </section>
+        <section>
+          <div class="title"><div>
+            <h1>split the slide in parts</h1>
+          </div></div>
+          <div class='full'>
+           <div class='row'>
+          <pre><code class="html">        &lt;section>
+          &lt;div class='full'>
+           &lt;div class='row'>Content on top&lt;/div>
+           &lt;div class='row'>
+            &lt;div class='panel'>Content on the left&lt;/div>
+            &lt;div class='panel'>Content on the right&lt;/div>
+           &lt;/div>
+          &lt;/div>
+        &lt;/section></code></pre>
+           </div>
+           <div class='row'>
+            <div class='panel'>
+             Content on the left
+            </div>
+            <div class='panel'>
+             <img style='height:100%' src='http://www.promos-pub.com/wp-content/uploads/2014/07/72d2881eabd41c6bd94b60564c561087.jpg' />
+            </div>
+           </div>
+          </div>
+        </section>
+        <section>
+          <div class="title"><div>
+            <h1>speaker notes</h1>
+          </div></div>
+          <ul>
+           <li>Speaker notes are only available in the speaker view</li>
+           <li>It's just a matter of adding a "notes" classed div in the slide's section.</li>
+          </ul>
+          <pre><code class="html">        &lt;section>
+          Slide content
+          &lt;div class="notes">
+           &lt;p>Your notes here&lt;/p>
+          &lt;/div>
+        &lt;/section></code></pre>
+        </section>
+      </div>
+      <div class="footer">
+       <footer>
+        <small>&copy; Copyright 2019 Sébastien Huss - Background images by "anarres" on openclipart</small>
+       </footer>
+      </div>
+    </div>
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.14.1/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/sebt3/djs@0.3.0/dist/djs.min.js"></script>
+    <script>
+var data = [
+  {month: "Q1-2016", apples: 3840, bananas: 1920, cherries: -1960, dates: -400},
+  {month: "Q2-2016", apples: 1600, bananas: 1440, cherries: -960, dates: -400},
+  {month: "Q3-2016", apples:  640, bananas:  960, cherries: -640, dates: -600},
+  {month: "Q4-2016", apples:  320, bananas:  480, cherries: -640, dates: -400}
+];
+
+var series = d3.stack()
+    .keys(["apples", "bananas", "cherries", "dates"])
+    .offset(d3.stackOffsetDiverging)
+    (data);
+
+var svg = d3.select("svg"),
+    margin = {top: 20, right: 30, bottom: 30, left: 60},
+    width = +svg.attr("width"),
+    height = +svg.attr("height");
+
+var x = d3.scaleBand()
+    .domain(data.map(function(d) { return d.month; }))
+    .rangeRound([margin.left, width - margin.right])
+    .padding(0.1);
+
+var y = d3.scaleLinear()
+    .domain([d3.min(series, stackMin), d3.max(series, stackMax)])
+    .rangeRound([height - margin.bottom, margin.top]);
+
+var z = d3.scaleOrdinal(d3.schemeCategory10);
+
+svg.append("g")
+  .selectAll("g")
+  .data(series)
+  .enter().append("g")
+    .attr("fill", function(d) { return z(d.key); })
+  .selectAll("rect")
+  .data(function(d) { return d; })
+  .enter().append("rect")
+    .attr("width", x.bandwidth)
+    .attr("x", function(d) { return x(d.data.month); })
+    .attr("y", function(d) { return y(d[1]); })
+    .attr("height", function(d) { return y(d[0]) - y(d[1]); })
+
+svg.append("g")
+    .attr("transform", "translate(0," + y(0) + ")")
+    .call(d3.axisBottom(x));
+
+svg.append("g")
+    .attr("transform", "translate(" + margin.left + ",0)")
+    .call(d3.axisLeft(y));
+
+function stackMin(serie) {
+  return d3.min(serie, function(d) { return d[0]; });
+}
+
+function stackMax(serie) {
+  return d3.max(serie, function(d) { return d[1]; });
+}
+    </script>
+</body>
+</html>
