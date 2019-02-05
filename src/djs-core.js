@@ -238,9 +238,9 @@
 			.on(     'wheel.jslides',	events.wheel, {passive: true})
 			.on(   'keydown.jslides',	events.keydown)
 			.on('touchstart.jslides',	events.slide.start)
-			.on(  'touchend.jslides',	events.slide.end)
-			.on( 'mousedown.jslides',	events.slide.start)
-			.on(   'mouseup.jslides',	events.slide.end);
+			.on(  'touchend.jslides',	events.slide.end);
+			/*.on( 'mousedown.jslides',	events.slide.start)
+			.on(   'mouseup.jslides',	events.slide.end);*/
 	});
 	if (typeof global.hljs === 'object')
 		hljs.initHighlightingOnLoad();
