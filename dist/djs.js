@@ -186,7 +186,7 @@
 		});
 		/* Complete optional toc */
 		d3.select('.jslides .slides').selectAll('section.index').each(function(d,t) {
-			var ol = d3.select(this).append('ol');
+			var ol = d3.select(this).append('div').classed('content',true).append('ol');
 			var li;
 			var prev = '';
 			var sub = '';
@@ -213,6 +213,18 @@
 					o.append('li').attr('value',i).text(t2);
 				}
 			});
+			if (ol.selectAll('li').nodes().length>40) {
+				ol.selectAll('ol').remove();
+			}
+			var th = window.innerHeight -  d3.select(this).select('div.title').node().getBoundingClientRect().height;
+			var h = ol.node().getBoundingClientRect().height;
+			console.log('th='+th+' h='+h);
+			if (h>th) {
+				ol.style('transform-origin','top');
+				ol.style('transform','scale('+0.9*th/h+')');
+			}
+			/*if (ol.selectAll('li').nodes().length>10)
+				ol.style('font-size', 50/(ol.selectAll('li').nodes().length)+'vh');*/
 		});
 
 		/* set the events */

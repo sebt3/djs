@@ -159,6 +159,7 @@ ul ul ul {
 ul ul, ul ol, ol ol, ol ul {
 	display: block;
 	margin-left: 40px;
+	font-size:0.8em;
 }
 
 dt {	font-weight: bold; }
