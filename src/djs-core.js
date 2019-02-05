@@ -112,8 +112,8 @@
 		/* set the controls bar */
 		var tb = speaker.control.append('div');
 		tb.append('button').attr('type','button').html('&laquo;').on('click',function() {nav.prev(5)});
-		tb.append('button').attr('type','button').html('&lsaquo;').on('click',function() {nav.prev()});
-		tb.append('button').attr('type','button').html('&rsaquo;').on('click',function() {nav.next()});
+		tb.append('button').attr('type','button').html('&lsaquo;').on('click',nav.prev);
+		tb.append('button').attr('type','button').html('&rsaquo;').on('click',nav.next);
 		tb.append('button').attr('type','button').html('&raquo;').on('click',function() {nav.next(5)});
 		var s = tb.append('select').attr('id','select').on('change',function() {
 			nav.render(tb.select('#select').property('value')-1);
@@ -172,6 +172,13 @@
 		all_slides.classed('out',true);
 		d3.select(all_slides.nodes()[nav.current]).classed('out',false);
 
+		/* Add navigation buttons */
+		var bar = d3.select('body').append('div').classed('nav_buttons',true);
+		bar.append('div').classed('grow',true).html('&lsaquo;')
+			.on('click', nav.prev);
+		bar.append('div').classed('grow',true).html('&rsaquo;')
+			.on('click',nav.next);
+		
 		/* Complete slide number and optional footer */
 		all_slides.each(function(d,t){
 			var me = d3.select(this).datum(t+1);
@@ -218,7 +225,6 @@
 			}
 			var th = window.innerHeight -  d3.select(this).select('div.title').node().getBoundingClientRect().height;
 			var h = ol.node().getBoundingClientRect().height;
-			console.log('th='+th+' h='+h);
 			if (h>th) {
 				ol.style('transform-origin','top');
 				ol.style('transform','scale('+0.9*th/h+')');

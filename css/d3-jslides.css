@@ -71,6 +71,25 @@ section footer {
 .slides section .notes {
 	visibility: hidden;
 }
+
+.nav_buttons {
+	z-index: 1000;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	font-size: 80px;
+	color: #245480;
+	cursor: default;
+	padding-right: 5px;
+	padding-bottom: 5px;
+}
+.grow {
+	float:left;
+	transition: all .2s ease-in-out;
+}
+.grow:hover {
+	transform: scale(1.4);
+}
 /*********************************************
  * HEADERS
  *********************************************/
@@ -384,6 +403,8 @@ a:hover {
 		visibility: hidden;
 		color:transparent;
 	}
-
+	.nav_buttons {
+		visibility: hidden;
+	}
 }
 
