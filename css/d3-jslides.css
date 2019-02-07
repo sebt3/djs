@@ -406,5 +406,9 @@ a:hover {
 	.nav_buttons {
 		visibility: hidden;
 	}
+	section .content img {
+		object-fit: scale-down;
+		max-height: 10cm;
+	}
 }
 

@@ -35,6 +35,9 @@
 		nav.current = id;
 		nav.write(id);
 	}
+	nav.hashchange = function() {
+		nav.render(nav.read());
+	}
 	nav.prev = function(m) { if(typeof m === 'undefined')m=1;nav.render(nav.current-m); }
 	nav.next = function(m) { if(typeof m === 'undefined')m=1;nav.render(nav.current+m); }
 	/*
@@ -238,7 +241,8 @@
 			.on(     'wheel.jslides',	events.wheel, {passive: true})
 			.on(   'keydown.jslides',	events.keydown)
 			.on('touchstart.jslides',	events.slide.start)
-			.on(  'touchend.jslides',	events.slide.end);
+			.on(  'touchend.jslides',	events.slide.end)
+			.on('hashchange.jslides',	nav.hashchange);
 			/*.on( 'mousedown.jslides',	events.slide.start)
 			.on(   'mouseup.jslides',	events.slide.end);*/
 	});
