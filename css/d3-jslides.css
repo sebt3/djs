@@ -342,7 +342,7 @@ a:hover {
 		overflow: visible !important;
 		display: block !important;
 
-		text-align: left;
+		/*text-align: left;*/
 	}
 	.slides section {
 		visibility: visible;
@@ -399,12 +399,8 @@ a:hover {
 		content: "";
 		clear: both;
 	}
-	.slides section .notes {
-		visibility: hidden;
-		color:transparent;
-	}
-	.nav_buttons {
-		visibility: hidden;
+	.slides section .notes, .nav_buttons {
+		display: none;
 	}
 	section .content img {
 		object-fit: scale-down;

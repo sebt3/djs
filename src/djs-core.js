@@ -48,10 +48,12 @@
 			case 8:  // back
 			case 37: // left
 			case 38: // up
+			case 33: // pageup
 			case 109:// kp_minus
 				nav.prev();break;
 			case 13: // enter
 			case 32: // space
+			case 34: // pagedown
 			case 39: // right
 			case 40: // down
 			case 107:// kp_plus
