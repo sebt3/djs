@@ -55,6 +55,12 @@
 			.on('hashchange.jslides',	slides.hashchange);
 			/*.on( 'mousedown.jslides',	events.slide.start)
 			.on(   'mouseup.jslides',	events.slide.end);*/
+		/* Add navigation buttons */
+		var bar = d3.select('body').append('div').classed('nav_buttons',true);
+		bar.append('div').classed('grow',true).html('&lsaquo;')
+			.on('click', slides.prev);
+		bar.append('div').classed('grow',true).html('&rsaquo;')
+			.on('click',slides.next);
 	});
 
 }));

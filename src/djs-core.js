@@ -45,13 +45,6 @@
 		slides.all = d3.select('.jslides .slides').selectAll('section');
 		slides.all.classed('out',true);
 		d3.select(slides.all.nodes()[nav.current]).classed('out',false);
-
-		/* Add navigation buttons */
-		var bar = d3.select('body').append('div').classed('nav_buttons',true);
-		bar.append('div').classed('grow',true).html('&lsaquo;')
-			.on('click', nav.prev);
-		bar.append('div').classed('grow',true).html('&rsaquo;')
-			.on('click',nav.next);
 		
 		/* Complete slide number and optional footer */
 		slides.all.each(function(d,t){
