@@ -40,7 +40,7 @@
 	/*
 	 * Complete the document after loading
 	 **************************************/
-	d3.select(window).on('load.jslides',	function() {
+	slides.init = 	function() {
 		var footer = d3.select('.jslides .footer footer');
 		slides.all = d3.select('.jslides .slides').selectAll('section');
 		slides.all.classed('out',true);
@@ -100,7 +100,8 @@
 				ol.style('font-size', 50/(ol.selectAll('li').nodes().length)+'vh');*/
 		});
 
-	});
+	}
+	d3.select(window).on('load.jslides',slides.init);
 	if (typeof global.hljs === 'object')
 		hljs.initHighlightingOnLoad();
 	slides.render = nav.render
